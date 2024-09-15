@@ -15,7 +15,7 @@ public class wizardTest
         wizard Alfred = new wizard("Alfred", 150);
         
         Assert.Equals("Alfred", Alfred.Name);
-        Assert.Equals(150, Alfred.hp);
+        Assert.Equals(150, Alfred.HealthPoints);
         
         
     }

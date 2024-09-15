@@ -59,11 +59,11 @@ public class wizard
 
         if (elfo.GetDefence() < attack)
         {
-            elfo.hp -= attack;
+            elfo.HealthPoints -= attack;
         }
         else
         {
-            elfo.armorDamage -= attack;
+            elfo.ArmorDamage -= attack;
         }
     }
 
@@ -72,15 +72,15 @@ public class wizard
         double attack = GetAtaque();
         if (enano.GetDefence() < attack)
         {
-            enano.hp -= attack;
+            enano.HealthPoints -= attack;
         }
         else
         {
-            enano.armorDamage -= attack;
+            enano.ArmorDamage -= attack;
         }
     }
 
-    public void healing()
+    public void Healing()
     {
         if (HealthPoints <= 75 && HealthPoints > 50)
         {
