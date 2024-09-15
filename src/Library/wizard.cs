@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
 
 namespace Library;
 
@@ -30,10 +30,12 @@ public class wizard
         if (SpellBook.ContainsKey(Spell))
         {
             weaponDamage = SpellBook[Spell];
+            return weaponDamage;
         }
         else
         {
-            Console.WriteLine("No spell available");    
+            Console.WriteLine("No spell available");
+            return 0;
         }
     }
     public double GetAtaque()
