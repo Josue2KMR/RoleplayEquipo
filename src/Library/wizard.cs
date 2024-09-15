@@ -6,18 +6,18 @@ public class wizard
 {
     // Atributos del mago
     public string Name;
-    public double hp = 100;
-    public bool weapon;
-    public double weaponDamage;
-    public bool armor;
-    public double armorDamage;
+    public double HealthPoints = 100;
+    public bool Weapon;
+    public double WeaponDamage;
+    public bool Armor;
+    public double ArmorDamage;
     public Dictionary<string, double> SpellBook;
     
     // Constructor
     public wizard(string name, double hp)
     {
         Name = name;
-        this.hp = hp;
+        HealthPoints = hp;
         SpellBook = new Dictionary<string, double>()
         {
             {"Ice", 100}, {"Fire", 150}, {"SuperNova", 350}, {"Eclipse", 250}, {"Berserk", 9999}
@@ -29,8 +29,8 @@ public class wizard
     {
         if (SpellBook.ContainsKey(Spell))
         {
-            weaponDamage = SpellBook[Spell];
-            return weaponDamage;
+            WeaponDamage = SpellBook[Spell];
+            return WeaponDamage;
         }
         else
         {
@@ -40,12 +40,12 @@ public class wizard
     }
     public double GetAtaque()
     {
-        return weapon ? weaponDamage : 10;
+        return Weapon ? WeaponDamage : 10;
     }
 
     public double GetDefence()
     {
-        return armor ? armorDamage : 0;
+        return Armor ? ArmorDamage : 0;
     }
 
     public Dictionary<string, double> GetSpellBook()
@@ -82,17 +82,17 @@ public class wizard
 
     public void healing()
     {
-        if (hp <= 75 && hp > 50)
+        if (HealthPoints <= 75 && HealthPoints > 50)
         {
-            hp += hp*0.5;
+            HealthPoints += HealthPoints*0.5;
         }
-        else if (hp <= 50 && hp > 25)
+        else if (HealthPoints <= 50 && HealthPoints > 25)
         {
-            hp += hp * 0.75;
+            HealthPoints += HealthPoints * 0.75;
         }
-        else if (hp <= 25)
+        else if (HealthPoints <= 25)
         {
-            hp = 100;
+            HealthPoints = 100;
         }
     }
 }
