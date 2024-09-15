@@ -20,7 +20,7 @@ public class wizard
         this.hp = hp;
         SpellBook = new Dictionary<string, double>()
         {
-            {"Ice", 100}, {"Fire", 150}, {"SuperNova", 350}, {"Eclipse", 250}
+            {"Ice", 100}, {"Fire", 150}, {"SuperNova", 350}, {"Eclipse", 250}, {"Berserk", 9999}
         };
     }
     
