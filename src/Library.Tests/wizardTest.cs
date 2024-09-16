@@ -12,11 +12,9 @@ public class wizardTest
     [Test]
     public void METHOD()
     {
-        wizard Alfred = new wizard("Alfred", 150);
+        wizard Alfred = new wizard("Alfred", 100);
         
         Assert.Equals("Alfred", Alfred.Name);
         Assert.Equals(150, Alfred.HealthPoints);
-        
-        
     }
 }

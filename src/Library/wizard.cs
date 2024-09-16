@@ -34,13 +34,9 @@ public class wizard
     
     public double GetAttack()
     {
-        if (WeaponDamage == null|| WeaponDamage.GetAtaque == 0)
+        if (WeaponDamage == null)
         {
             return 10;
-        }
-        else
-        {
-            return WeaponDamage.GetAtaque;
         }
     }
 

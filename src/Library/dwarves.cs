@@ -3,82 +3,48 @@ namespace Library;
 
 public class dwarves
 {
-    //Atributos del enanooo
     public string Name;
-    public double HealthPoints = 150;
-    public bool Weapon;
-    public double WeaponDamage;
-    public bool Armor;
-    public double ArmorDamage;
-    public Dictionary<string, double> Weapons;
-
-    //Constructor
-    public dwarves(string name, double hp)
+    public double HealthPoints;
+    public Item arma;
+    public Item armadura;
+    
+    public dwarves(string name, double hp,Item arma,Item armadura)
     {
-        Name = name;
-        HealthPoints = hp;
-        Weapons = new Dictionary<string, double>()
-        {
-            { "Punch", 20 }, { "Axe", 70 }, { "Hammer", 90 }, { "Gun", 120 }
-        };
-    }
+        this.Name = name;
+        this.HealthPoints = hp+armadura.GetDefensa;
+        this.arma = arma;
+        this.armadura = armadura;
 
-    //Metodos
-    public double SelectWeapon(string weapon)
-    {
-        if (Weapons.ContainsKey(weapon))
-        {
-            WeaponDamage = Weapons[weapon];
-            Weapon = true;
-            return WeaponDamage;
-        }
-        else
-        {
-            Console.WriteLine("No weapon available");
-            return 0;
-        }
     }
-
     public double GetAttack()
     {
-        return Weapon ? WeaponDamage : 15;  
+         Console.WriteLine($"El ataque del enano {this.Name} es");
+         return arma.GetAtaque;
     }
-
     public double GetDefence()
     {
-        return Armor ? ArmorDamage : 10;
+        Console.WriteLine($"La defensa del enano {this.Name} es ");;
+        return armadura.GetDefensa;
     }
-
-
-    public void EquipArmor(string armor, double defense)
-    {
-        Armor = true;
-        ArmorDamage = defense;
-    }
+    
 
     public void Attack(wizard wizard)
     {
         double attack = GetAttack();
-        if (wizard.GetDefence() < attack)
-        {
             wizard.HealthPoints -= attack;
-        }
-        else
-        {
-            wizard.ArmorDamage -= attack;
-        }
+            if (wizard.HealthPoints < 0)
+            {
+                wizard.HealthPoints = 0;
+            }
     }
 
-    public void Attack(elves elfo)
+    public void Attack(Elfo elfo)
     {
         double attack = GetAttack();
-        if (elfo.GetDefence() < attack)
+        elfo.HealthPoints -= attack;
+        if (elfo.HealthPoints < 0)
         {
-            elfo.HealthPoints -= attack;
-        }
-        else
-        {
-            elfo.ArmorDefense -= attack;
+            elfo.HealthPoints = 0;
         }
     }
 
