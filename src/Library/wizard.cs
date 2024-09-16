@@ -34,9 +34,13 @@ public class wizard
     
     public double GetAttack()
     {
-        if (WeaponDamage == null)
+        if (WeaponDamage == null || WeaponDamage.GetDefensa == 0)
         {
             return 10;
+        }
+        else
+        {
+            return WeaponDamage.GetAtaque;
         }
     }
 
@@ -56,13 +60,13 @@ public class wizard
     {
         double attack = GetAttack();
 
-        if (elfo.ObtenerDefensa() < attack)
+        if (elfo.GetDefence() < attack)
         {
-            elfo.PuntosDeVida -= attack;
+            elfo.HealthPoints -= attack;
         }
         else
         {
-            elfo.DañoArmadura -= attack;
+            elfo.HealthPoints -= attack;
         }
     }
 
@@ -75,7 +79,7 @@ public class wizard
         }
         else
         {
-            enano.ArmorDamage -= attack;
+            enano.HealthPoints -= attack;
         }
     }
 
