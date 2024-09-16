@@ -11,23 +11,21 @@ public class wizard
     public double WeaponDamage;
     public bool Armor;
     public double ArmorDamage;
-    public Dictionary<string, double> SpellBook;
+    public LibroDeHechizos SpellBook;
     
     // Constructor
-    public wizard(string name, double hp)
+    public wizard(string name, double hp,LibroDeHechizos spellBook)
     {
         Name = name;
         HealthPoints = hp;
-        SpellBook = new Dictionary<string, double>()
-        {
-            {"Ice", 100}, {"Fire", 150}, {"SuperNova", 350}, {"Eclipse", 250}, {"Berserk", 9999}
-        };
+        SpellBook = spellBook;
+
     }
     
     // Métodos del mago
     public double SelectSpell(string Spell)
     {
-        if (SpellBook.ContainsKey(Spell))
+        if (SpellBook.GetListaHechizos.Contains(Spell))
         {
             WeaponDamage = SpellBook[Spell];
             return WeaponDamage;
@@ -53,7 +51,7 @@ public class wizard
         return SpellBook;
     }
 
-    public void Attack(elves elfo)
+    public void Attack(Elves elfo)
     {
         double attack = GetAtaque();
 
