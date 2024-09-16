@@ -21,6 +21,7 @@ public class wizard
         this.WeaponDamage = weaponDamage;
     }
     
+
     // Métodos del mago
     public List<string> ListaDeHechizos()
     {
@@ -34,20 +35,28 @@ public class wizard
     
     public double GetAttack()
     {
-        if (WeaponDamage == null)
+        if (WeaponDamage == null || WeaponDamage.GetDefensa == 0)
         {
+            Console.WriteLine($"El ataque del Mago {this.Name} es");
             return 10;
+        }
+        else
+        {
+            Console.WriteLine($"El ataque del Mago {this.Name} es");
+            return WeaponDamage.GetAtaque;
         }
     }
 
     public double GetDefence()
     {
-        if (ArmorDamage.GetDefensa == null)
+        if (ArmorDamage.GetDefensa == 0)
         {
+            Console.WriteLine($"La defensa del Mago {this.Name} es");
             return HealthPoints;
         }
         else
         {
+            Console.WriteLine($"La defensa del Mago {this.Name} es");
             return HealthPoints += ArmorDamage.GetDefensa;
         }
     }
@@ -56,13 +65,13 @@ public class wizard
     {
         double attack = GetAttack();
 
-        if (elfo.ObtenerDefensa() < attack)
+        if (elfo.GetDefence() < attack)
         {
-            elfo.PuntosDeVida -= attack;
+            elfo.HealthPoints -= attack;
         }
         else
         {
-            elfo.DañoArmadura -= attack;
+            elfo.HealthPoints -= attack;
         }
     }
 
@@ -75,7 +84,7 @@ public class wizard
         }
         else
         {
-            enano.ArmorDamage -= attack;
+            enano.HealthPoints -= attack;
         }
     }
 

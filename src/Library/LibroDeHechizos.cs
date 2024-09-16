@@ -22,6 +22,6 @@ public class LibroDeHechizos
 
     public int GetConocimiento
     {
-        get { conocimientoMago = ListaHechizos.Count; }
+        get { return ListaHechizos.Count; }
     }
 }
