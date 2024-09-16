@@ -69,7 +69,7 @@ public class dwarves
         }
     }
 
-    public void Attack(elves elfo)
+    public void Attack(Elfo elfo)
     {
         double attack = GetAttack();
         if (elfo.GetDefence() < attack)
