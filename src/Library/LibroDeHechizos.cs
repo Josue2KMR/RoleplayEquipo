@@ -22,6 +22,6 @@ public class LibroDeHechizos
 
     public int GetConocimiento
     {
-        set { conocimientoMago = ListaHechizos.Count; }
+        get { conocimientoMago = ListaHechizos.Count; }
     }
 }

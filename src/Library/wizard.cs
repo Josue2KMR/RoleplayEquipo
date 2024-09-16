@@ -7,67 +7,68 @@ public class wizard
     // Atributos del mago
     public string Name;
     public double HealthPoints = 100;
-    public bool Weapon;
-    public double WeaponDamage;
-    public bool Armor;
-    public double ArmorDamage;
+    public Item WeaponDamage;
+    public Item ArmorDamage;
     public LibroDeHechizos SpellBook;
     
     // Constructor
-    public wizard(string name, double hp,LibroDeHechizos spellBook)
+    public wizard(string name, double hp, LibroDeHechizos spellBook, Item armorDamage, Item weaponDamage)
     {
-        Name = name;
-        HealthPoints = hp;
-        SpellBook = spellBook;
-
+        this.Name = name;
+        this.HealthPoints = hp + armorDamage.GetDefensa;
+        this.SpellBook = spellBook;
+        this.ArmorDamage = armorDamage;
+        this.WeaponDamage = weaponDamage;
     }
     
     // Métodos del mago
-    public double SelectSpell(string Spell)
+    public List<string> ListaDeHechizos()
     {
-        if (SpellBook.GetListaHechizos.Contains(Spell))
-        {
-            WeaponDamage = SpellBook[Spell];
-            return WeaponDamage;
-        }
-        else
-        {
-            Console.WriteLine("No spell available");
-            return 0;
-        }
+        return SpellBook.GetListaHechizos;
     }
-    public double GetAtaque()
+
+    public int Conocimiento()
     {
-        return Weapon ? WeaponDamage : 10;
+        return SpellBook.GetConocimiento;
+    }
+    
+    public double GetAttack()
+    {
+        if (WeaponDamage == null)
+        {
+            return 10;
+        }
     }
 
     public double GetDefence()
     {
-        return Armor ? ArmorDamage : 0;
-    }
-
-    public Dictionary<string, double> GetSpellBook()
-    {
-        return SpellBook;
-    }
-
-    public void Attack(Elves elfo)
-    {
-        double attack = GetAtaque();
-
-        if (elfo.GetDefence() < attack)
+        if (ArmorDamage.GetDefensa == null)
         {
-            elfo.HealthPoints -= attack;
+            return HealthPoints;
         }
         else
         {
-            elfo.ArmorDamage -= attack;
+            return HealthPoints += ArmorDamage.GetDefensa;
+        }
+    }
+
+    public void Attack(Elfo elfo)
+    {
+        double attack = GetAttack();
+
+        if (elfo.ObtenerDefensa() < attack)
+        {
+            elfo.PuntosDeVida -= attack;
+        }
+        else
+        {
+            elfo.DañoArmadura -= attack;
         }
     }
 
     public void Attack(dwarves enano)
     {
-        double attack = GetAtaque();
+        double attack = GetAttack();
         if (enano.GetDefence() < attack)
         {
             enano.HealthPoints -= attack;
