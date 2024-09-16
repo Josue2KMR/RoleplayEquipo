@@ -13,15 +13,13 @@ public class LibroDeHechizos
         this.conocimientoMago = conocimientoMago;
     }
     
-
-        public List<string> GetListaHechizos
+    public List<string> GetListaHechizos 
     {
         get { return ListaHechizos; }
-
-    }
+    }    
 
     public int GetConocimiento
     {
-        get { conocimientoMago = ListaHechizos.Count; }
+        get { return ListaHechizos.Count; }
     }
 }
