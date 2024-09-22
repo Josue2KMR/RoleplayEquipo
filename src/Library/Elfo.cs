@@ -29,7 +29,7 @@ namespace Library
             return arma.GetDefensa;
         } 
 
-        public void Attack(wizard wizard)
+        public void Attack(Wizard wizard)
         {
             double attack = GetAttack();
             wizard.HealthPoints -= attack;
