@@ -1,6 +1,8 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class SpellsBook
+namespace Items;
+
+public class SpellsBook:INnterfaceItem
 {
     public Spell[] Spells { get; set; }
     

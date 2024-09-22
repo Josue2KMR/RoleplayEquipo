@@ -1,9 +1,9 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Axe
+namespace Items;
+
+public class Axe:INnterfaceItem
 {
-    public int AttackValue
-    {
-        get { return 25; }
-    }
+    public int AttackValue => 25;
+    public int DefenseValue => 0;
 }

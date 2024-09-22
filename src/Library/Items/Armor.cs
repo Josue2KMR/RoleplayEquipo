@@ -1,12 +1,9 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Armor
+namespace Items;
+
+public class Armor:InterfacePersonaje
 {
-    public int DefenseValue
-    {
-        get
-        {
-            return 25;
-        }
-    }
+    public int DefenseValue => 25;
+    public int AttackValue => 0;
 }

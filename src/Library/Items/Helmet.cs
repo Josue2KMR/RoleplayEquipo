@@ -1,12 +1,9 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Helmet
+namespace Items;
+
+public class Helmet:INnterfaceItem
 {
-    public int DefenseValue
-    {
-        get
-        {
-            return 18;
-        }
-    }
+    public int DefenseValue => 18;
+    public int AttackValue => 0;
 }

@@ -1,20 +1,10 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Spell
+namespace Items;
+
+public class Spell:INnterfaceItem
 {
-    public int AttackValue
-    {
-        get
-        {
-            return 70;
-        }
-    }
-
-    public int DefenseValue
-    {
-        get
-        {
-            return 70;
-        }
-    }
+    public int AttackValue => 70;
+    public int DefenseValue => 70;
+    
 }

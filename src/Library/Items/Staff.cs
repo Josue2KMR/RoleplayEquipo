@@ -1,20 +1,10 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Staff
+namespace Items;
+
+public class Staff:INnterfaceItem
 {
-    public int AttackValue 
-    {
-        get
-        {
-            return 100;
-        } 
-    }
-
-    public int DefenseValue
-    {
-        get
-        {
-            return 100;
-        }
-    }
+    public int AttackValue => 100;
+    public int DefenseValue => 100;
+    
 }

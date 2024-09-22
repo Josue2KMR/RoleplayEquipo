@@ -1,12 +1,10 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Sword
+namespace Items;
+
+public class Sword:INnterfaceItem
 {
-    public int AttackValue 
-    {
-        get
-        {
-            return 20;
-        } 
-    }
+    public int AttackValue => 20;
+    public int DefenseValue => 0;
+    
 }

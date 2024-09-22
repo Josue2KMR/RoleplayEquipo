@@ -1,12 +1,9 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Bow
+namespace Items;
+
+public class Bow:INnterfaceItem
 {
-    public int AttackValue 
-    {
-        get
-        {
-            return 15;
-        } 
-    }
+    public int AttackValue => 15;
+    public int DefenseValue => 0;
 }
