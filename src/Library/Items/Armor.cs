@@ -2,8 +2,8 @@
 
 namespace Items;
 
-public class Armor:InterfacePersonaje
+public class Armor: ItemAttack
 {
-    public int DefenseValue => 25;
-    public int AttackValue => 0;
+    public int DefenseValue{get; set;}
+    public int AttackValue {get; set;}
 }

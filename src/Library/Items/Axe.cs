@@ -2,8 +2,16 @@
 
 namespace Items;
 
-public class Axe:INnterfaceItem
+public class Axe: ItemAttack
 {
-    public int AttackValue => 25;
-    public int DefenseValue => 0;
+    public int AttackValue
+    {
+        get {
+            return AttackValue;
+        } 
+        set {
+            AttackValue = value;   
+        }
+    }
+    public int DefenseValue {get;}
 }
