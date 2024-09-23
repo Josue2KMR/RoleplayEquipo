@@ -1,6 +1,6 @@
 ﻿namespace Library.Interfaces;
 
-public interface IPersonaje
+public interface IPersonaje:IItemAttackValue,IItemDefenseValue
 {
     double GetAttack();
     double GetDefence();

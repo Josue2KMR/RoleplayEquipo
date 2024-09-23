@@ -6,28 +6,30 @@ namespace Library;
 public class dwarves:IPersonaje
 {
     public string Name;
-    public Item arma;
-    public Item armadura;
+    public IItemAttackValue arma;
+    public IItemDefenseValue armadura;
     
-    public dwarves(string name, double health,Item arma,Item armadura)
+    public dwarves(string name, double health,IItemAttackValue arma,IItemDefenseValue armadura)
     {
         this.Name = name;
-        this.health = 100 + armadura.GetDefensa;
+        this.health = 100 + armadura.DefenseValue;
         this.arma = arma;
         this.armadura = armadura;
 
     }
     
+    public int AttackValue { get; set; }
+    public int DefenseValue { get; set; }
     public double health { get; set; }
     public double GetAttack()
     {
          Console.WriteLine($"El ataque del enano {this.Name} es");
-         return arma.GetAtaque;
+         return arma.AttackValue;
     }
     public double GetDefence()
     {
         Console.WriteLine($"La defensa del enano {this.Name} es ");;
-        return armadura.GetDefensa;
+        return armadura.DefenseValue;
     }
     
 
@@ -56,4 +58,5 @@ public class dwarves:IPersonaje
             health = 150; 
         }
     }
+    
 }

@@ -1,62 +1,62 @@
-﻿using System;
-using Items;
+﻿using Items;
+using Library;
 using Library.Interfaces;
-
-namespace Library;
 
 public class Wizard:IPersonaje
 {
-    private int health = 100;
-
-    public Wizard(string name)
+    public string Name;
+    public IItemAttackValue arma;
+    public IItemDefenseValue armadura;
+        
+    public Wizard(string name, double health,IItemAttackValue arma,IItemDefenseValue armadura)
     {
         this.Name = name;
-    }
+        this.health = 100+armadura.DefenseValue;
+        this.arma = arma;
+        this.armadura = armadura;
 
-    public string Name { get; set; }
+    }
 
     public SpellsBook SpellsBook { get; set; }
+    public int AttackValue { get; set; }
+    public int DefenseValue { get; set; }
+    public double health { get; set; }
 
-    public Staff Staff { get; set; }
-
-    public int AttackValue
+    public double GetAttack()
     {
-        get
-        {
-            return SpellsBook.AttackValue + Staff.AttackValue;
-        }
+        Console.WriteLine($"El ataque del mago {this.Name} es");
+        return arma.AttackValue;
     }
 
-    public int DefenseValue
+    public double GetDefence()
     {
-        get
+        Console.WriteLine($"La defensa del mago {this.Name} es ");;
+        return armadura.DefenseValue;
+    } 
+        
+    public void Attack(IPersonaje objetivo)
+    {
+        double attack = GetAttack();
+        objetivo.health -= attack;
+        if (objetivo.health < 0)
         {
-            return SpellsBook.DefenseValue + Staff.DefenseValue;
+            objetivo.health = 0;
         }
     }
-
-    public int Health
+    public void Heal()
     {
-        get
+        if (health <= 100 && health > 75)
         {
-            return this.health;
+            health += health * 0.25;
         }
-        private set
+        else if (health <= 75 && health > 50)
         {
-            this.health = value < 0 ? 0 : value;
+            health += health * 0.50;
         }
-    }
-
-    public void ReceiveAttack(int power)
-    {
-        if (this.DefenseValue < power)
+        else if (health <= 50)
         {
-            this.Health -= power - this.DefenseValue;
+            health = 150; 
         }
     }
-
-    public void Cure()
-    {
-        this.Health = 100;
-    }
+    
 }

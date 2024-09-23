@@ -6,10 +6,10 @@ namespace Library
     public class Elfo:IPersonaje
     {
         public string Name;
-        public Item arma;
-        public Item armadura;
+        public IItemAttackValue arma;
+        public IItemDefenseValue armadura;
         
-        public Elfo(string name, double health,Item arma,Item armadura)
+        public Elfo(string name, double health,IItemAttackValue arma,IItemDefenseValue armadura)
         {
             this.Name = name;
             this.health = 100;
@@ -17,19 +17,21 @@ namespace Library
             this.armadura = armadura;
 
         }
-
+        
+        public int AttackValue { get; set; }
+        public int DefenseValue { get; set; }
         public double health { get; set; }
 
         public double GetAttack()
         {
             Console.WriteLine($"El ataque del elfo {this.Name} es");
-            return arma.GetAtaque;
+            return arma.AttackValue;
         }
 
         public double GetDefence()
         {
             Console.WriteLine($"La defensa del elfo {this.Name} es ");;
-            return arma.GetDefensa;
+            return armadura.DefenseValue;
         } 
         
         public void Attack(IPersonaje objetivo)
@@ -57,6 +59,7 @@ namespace Library
             }
         }
 
-       
+
+        
     }
 }
