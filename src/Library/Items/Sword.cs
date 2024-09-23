@@ -2,9 +2,9 @@
 
 namespace Items;
 
-public class Sword:INnterfaceItem
+public class Sword:IItemAttackValue
 {
-    public int AttackValue => 20;
-    public int DefenseValue => 0;
+    public int AttackValue { get; set; } = 20;
+    
     
 }

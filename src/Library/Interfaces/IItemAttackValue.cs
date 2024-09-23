@@ -1,7 +1,6 @@
 ﻿namespace Library.Interfaces;
 
-public interface ItemAttack
+public interface IItemAttackValue
 {
     int AttackValue { get; set; }
-    int DefenseValue { get; }
 }

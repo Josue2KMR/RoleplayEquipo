@@ -2,9 +2,30 @@
 
 namespace Items;
 
-public class Staff:INnterfaceItem
+public class Staff:IItemAttackValue,IItemDefenseValue
 {
-    public int AttackValue => 100;
-    public int DefenseValue => 100;
-    
+    public int AttackValue
+    {
+        get
+        {
+            return AttackValue;
+        }
+        set
+        {
+            AttackValue = 100;
+        }
+    }
+
+    public int DefenseValue
+    {
+        get
+        {
+            return DefenseValue;
+        }
+        set
+        {
+            DefenseValue = 100;
+        }
+    }
+
 }

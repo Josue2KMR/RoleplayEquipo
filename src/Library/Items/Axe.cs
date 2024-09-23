@@ -2,16 +2,17 @@
 
 namespace Items;
 
-public class Axe: ItemAttack
+public class Axe:IItemAttackValue
 {
     public int AttackValue
     {
-        get {
+        get
+        {
             return AttackValue;
-        } 
-        set {
-            AttackValue = value;   
+        }
+        set
+        {
+            AttackValue = 25;
         }
     }
-    public int DefenseValue {get;}
 }

@@ -2,8 +2,18 @@
 
 namespace Items;
 
-public class Armor: ItemAttack
+public class Armor: IItemDefenseValue
 {
-    public int DefenseValue{get; set;}
-    public int AttackValue {get; set;}
+    public int DefenseValue
+    {
+        get
+        {
+            return DefenseValue;
+        } 
+        set
+        {
+            DefenseValue = 25;
+        }
+    }
+    
 }

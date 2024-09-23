@@ -1,12 +1,18 @@
-﻿namespace Items;
+﻿using Library.Interfaces;
 
-public class Shield
+namespace Items;
+
+public class Shield:IItemDefenseValue
 {
     public int DefenseValue
     {
         get
         {
-            return 14;
+            return DefenseValue;
+        } 
+        set
+        {
+            DefenseValue = 14;
         }
     }
 }
