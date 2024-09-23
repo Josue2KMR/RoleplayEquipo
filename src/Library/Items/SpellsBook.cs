@@ -2,7 +2,7 @@
 
 namespace Items;
 
-public class SpellsBook:INnterfaceItem
+public class SpellsBook
 {
     public Spell[] Spells { get; set; }
     

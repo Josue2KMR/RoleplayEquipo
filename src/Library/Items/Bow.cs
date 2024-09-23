@@ -2,8 +2,8 @@
 
 namespace Items;
 
-public class Bow:INnterfaceItem
+public class Bow:IItemAttackValue
 {
-    public int AttackValue => 15;
-    public int DefenseValue => 0;
+    public int AttackValue { get; set; } = 15;
+    
 }

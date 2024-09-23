@@ -2,8 +2,8 @@
 
 namespace Items;
 
-public class Armor:INnterfaceItem
+public class Armor:IItemDefenseValue
 {
-    public int DefenseValue => 25;
-    public int AttackValue => 0;
+    public int DefenseValue { get; set; }=25;
+    
 }

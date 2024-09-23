@@ -2,9 +2,8 @@
 
 namespace Items;
 
-public class Spell:INnterfaceItem
+public class Spell:IItemAttackValue
 {
-    public int AttackValue => 70;
-    public int DefenseValue => 70;
+    public int AttackValue { get; set; }= 70;
     
 }

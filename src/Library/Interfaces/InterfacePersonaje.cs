@@ -1,6 +1,6 @@
 ﻿namespace Library.Interfaces;
 
-public class IPersonaje
+public interface IPersonaje
 {
     double AttackValue();
     double DefenseValue();
