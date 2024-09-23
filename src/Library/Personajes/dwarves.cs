@@ -1,21 +1,24 @@
 ﻿using System;
+using Library.Interfaces;
+
 namespace Library;
 
-public class dwarves
+public class dwarves:IPersonaje
 {
     public string Name;
-    public double HealthPoints;
     public Item arma;
     public Item armadura;
     
-    public dwarves(string name, double hp,Item arma,Item armadura)
+    public dwarves(string name, double health,Item arma,Item armadura)
     {
         this.Name = name;
-        this.HealthPoints = hp+armadura.GetDefensa;
+        this.health = 100 + armadura.GetDefensa;
         this.arma = arma;
         this.armadura = armadura;
 
     }
+    
+    public double health { get; set; }
     public double GetAttack()
     {
          Console.WriteLine($"El ataque del enano {this.Name} es");
@@ -28,39 +31,29 @@ public class dwarves
     }
     
 
-    public void Attack(Wizard wizard)
+    public void Attack(IPersonaje objetivo)
     {
         double attack = GetAttack();
-            wizard.HealthPoints -= attack;
-            if (wizard.HealthPoints < 0)
-            {
-                wizard.HealthPoints = 0;
-            }
-    }
-
-    public void Attack(Elfo elfo)
-    {
-        double attack = GetAttack();
-        elfo.HealthPoints -= attack;
-        if (elfo.HealthPoints < 0)
+        objetivo.health -= attack;
+        if (objetivo.health < 0)
         {
-            elfo.HealthPoints = 0;
+            objetivo.health = 0;
         }
     }
 
     public void Heal()
     {
-        if (HealthPoints <= 100 && HealthPoints > 75)
+        if (health <= 100 && health > 75)
         {
-            HealthPoints += HealthPoints * 0.25;
+            health += health * 0.25;
         }
-        else if (HealthPoints <= 75 && HealthPoints > 50)
+        else if (health <= 75 && health > 50)
         {
-            HealthPoints += HealthPoints * 0.50;
+            health += health * 0.50;
         }
-        else if (HealthPoints <= 50)
+        else if (health <= 50)
         {
-            HealthPoints = 150; 
+            health = 150; 
         }
     }
 }
