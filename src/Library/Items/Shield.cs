@@ -4,5 +4,15 @@ namespace Items;
 
 public class Shield:IItemDefenseValue
 {
-    public int DefenseValue { get; set; } = 14;
+    public int DefenseValue
+    {
+        get
+        {
+            return DefenseValue;
+        } 
+        set
+        {
+            DefenseValue = 14;
+        }
+    }
 }

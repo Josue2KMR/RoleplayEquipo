@@ -30,7 +30,7 @@ public class SpellsBook:IItemDefenseValue,IItemAttackValue
             int value = 0;
             foreach (Spell spell in this.Spells)
             {
-                value += spell.DefenseValue;
+                value += spell.AttackValue;
             }
             return value;
         }

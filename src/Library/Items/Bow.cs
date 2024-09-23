@@ -4,6 +4,16 @@ namespace Items;
 
 public class Bow:IItemAttackValue
 {
-    public int AttackValue { get; set; } = 15;
+    public int AttackValue
+    {
+        get
+        {
+            return AttackValue;
+        }
+        set
+        {
+            AttackValue = 15;
+        }
+    }
     
 }

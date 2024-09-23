@@ -4,5 +4,15 @@ namespace Items;
 
 public class Axe:IItemAttackValue
 {
-    public int AttackValue { get; set; }= 25;
+    public int AttackValue
+    {
+        get
+        {
+            return AttackValue;
+        }
+        set
+        {
+            AttackValue = 25;
+        }
+    }
 }
