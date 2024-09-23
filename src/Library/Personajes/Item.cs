@@ -1,6 +1,8 @@
+using Library.Interfaces;
+
 namespace Library;
 
-public class Item
+public class Item:IItemAttackValue, IItemDefenseValue
 {
     private string nombre;
     private double ataque;
@@ -13,6 +15,8 @@ public class Item
         this.defensa = defensa;
     }
 
+    public int AttackValue { get; set; }
+    public int DefenseValue { get; set; }
     public string GetNombre
     {
         get{return nombre; }

@@ -8,13 +8,8 @@ namespace Library.Tests;
 [TestOf(typeof(Wizard))]
 public class wizardTest
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
-    public void Test1()
+    public void AtacaAunObjetivo ()
     {
         Assert.Pass();
     }
