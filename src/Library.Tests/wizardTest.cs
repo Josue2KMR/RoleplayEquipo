@@ -18,11 +18,10 @@ public class wizardTest
         var wizard = new Wizard("Gandalf", 100, axe, armor);
         var dwarf = new dwarves("Thorin", 100, axe, armor);
 
-        // Act
+       
         wizard.Attack(dwarf);
-
-        // Assert
-        Assert.True(dwarf.health, 100);
-        Assert.AreEqual(90, dwarf.health);  // Suponiendo que el ataque de Gandalf reduce 10 de salud
+        
+        Assert.That(dwarf.health, Is.EqualTo(100));
+        Assert.That(dwarf.health, Is.EqualTo(90));
     }
 }
