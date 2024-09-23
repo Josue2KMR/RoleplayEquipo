@@ -2,7 +2,7 @@
 
 namespace Items;
 
-public class SpellsBook
+public class SpellsBook:IItemDefenseValue,IItemAttackValue
 {
     public Spell[] Spells { get; set; }
     
@@ -17,6 +17,10 @@ public class SpellsBook
             }
             return value;
         }
+        set
+        {
+            
+        }
     }
 
     public int DefenseValue
@@ -29,6 +33,10 @@ public class SpellsBook
                 value += spell.DefenseValue;
             }
             return value;
+        }
+        set
+        {
+            
         }
     }
 }
