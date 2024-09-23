@@ -2,7 +2,7 @@
 
 namespace Items;
 
-public class Armor:InterfacePersonaje
+public class Armor:INnterfaceItem
 {
     public int DefenseValue => 25;
     public int AttackValue => 0;
