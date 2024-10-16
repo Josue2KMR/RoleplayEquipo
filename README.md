@@ -1,116 +1,65 @@
-<img alt="UCU" src="https://www.ucu.edu.uy/plantillas/images/logo_ucu.svg"
-width="150"/>
+Universidad Católica del Uruguay
+Facultad de Ingeniería y Tecnologías
+Programación II
+Encuentros de herederos en la Tierra Media
+Los encuentros heredados en la Tierra Media no tienen nada que ver con personajes ancestrales que han pasado a mejor vida, sino con las similitudes que se pueden encontrar entre los componentes del juego.
 
-# Universidad Católica del Uruguay
+En el ejercicio anterior han encontrado algunas abstracciones útiles, pero como habrán visto, mucha de la lógica del juego se encuentra repetida en distintos objetos.
 
-## Facultad de Ingeniería y Tecnologías
+Si sólo existieran herramientas para reutilizar código...
 
-### Programación II
+Desafío
+Parte 1: Refactoring
+Refactorizen1 el código de la parte 2 para aplicar técnicas de reutilización de código que conozcan.
 
-# Encuentros futuros de la Tierra Media
+Parte 2: Comprobar que sigue funcionando
+Como bien saben, el proceso de refactoring cambia la estructura del código sin cambiar su comportamiento. Para demostrar esto, agreguen los casos de test de la parte 2 —o escribanlos si no llegaron a escribirlos o recibieron feedback para mejorarlos— y comprueben que todo siga funcionando igual que antes —los tests dan verde—.
 
-En este juego, varios personajes cobrarán vida en la Tierra Media.
+Parte 3: Los malos (The Bad Guys)
+Crearemos un nuevo tipo de personajes: los Enemigos o Enemies.
 
-## Personajes [Characters]
+Los enemigos son personajes —characters— que representan a "los malos". Los enemigos, al igual que los personajes que ya conocíamos, también tienen items para atacar y defender.
 
-Existen diferentes tipos de personajes provenientes de distintas especies.
+También le daremos una distinción a los personajes que ya conocíamos. A partir de ahora nos referiremos a ellos como los Héroes —o Heroes—.
 
-### [Magos _[Wizards]_](https://lotr.fandom.com/wiki/Wizards)
+Una diferencia entre los héroes y los enemigos es que los héroes acumulan puntos de victoria —VP—, mientras que los enemigos tienen un valor de puntos de victoria —VP—. Cuando un héroe mata a un enemigo, el héroe gana los VP del enemigo que mató.
 
-Los magos, también conocidos como Istari, tienen el dominio de la mágia, que
-provee capacidades de ataque y de defensa. La mágia es innata a ellos, aunque
-pueden adquirir más mediente el estudio de la asignatura, y mediante elementos
-que la potencian —por ejemplo, un [bastón
-mágico](https://ringsdb.com/bundles/cards/142008.png)—.
+Cada integrante del equipo deberá agregar al menos un enemigo.
 
-### [Elfos _[Elves]_](https://lotr.fandom.com/wiki/Elves)
+Parte 4: Preparando el campo de batalla
+Incorporaremos otro nuevo concepto a nuestro juego de encuentros en la Tierra Media: los Encuentros —o Encounters—.
 
-Los elfos son criaturas supernaturales que también poseen características
-mágicas, y en general son conocidos por ayudar a los demás.
+Los encuentros son instancias donde dos o más personajes se encuentran para batallar (encuentros de combate). En el futuro incorporaremos otros tipos de encuentro.
 
-### [Enanos _[Dwarves]_](https://lotr.fandom.com/wiki/Dwarves)
+En un encuentro debe haber siempre personajes Heroe y personajes Enemigo —al menos uno de cada uno—.
 
-Los enanos son seres temperamentales, muy buenos en combate con las armas,
-físicamente fuertes, con mucha resistencia y leales a sus amigos.
+Todo encuentro deben exponer un método void DoEncounter() para ejecutarlo. Cuando el encuentro se ejecuta, los héroes batallarán contra los enemigos, de la siguiente forma:
 
-## Elementos _[Items]_
+Los enemigos atacan primero. Cada enemigo ataca únicamente a un héroe. Si hay un sólo héroe, todos los enemigos atacan al mismo. Si hay más de un enemigo y más de un héroe, el primer enemigo ataca al primer héroe, el segundo enemigo ataca al segundo héroe, y así sucesivamente. Si hay menos héroes (N) que enemigos (M), el siguiente enemigo (N+1) ataca al primero héroe, el siguiente enemigo (N+2) ataca al segundo héroe, y así sucesivamente.
 
-Los personajes necesitan de ciertos elementos para poder combatir con sus
-enemigos. Estos elementos pueden ser ropaje —túnica, por ejemplo—, armas —como
-un hacha o una espada—, entre otros.
+Luego, los héroes sobrevivientes atacan a los enemigos. Todos los héroes atacan a cada uno de los enemigos 1 vez.
 
-Existe un elemento particularmente interesante, llamado libro de hechizos. El
-libro de hechizos es tan poderoso como hechizos tenga en él, y representa el
-conocimiento de un mago.
+Cada vez que un héroe mata a un enemigo, ese héroe se lleva los VP del enemigo que ha vencido.
 
-# Desafío
+Se repite el primer punto.
 
-## Parte 0: Repo
+El encuentro termina cuando todos los héroes o todos los enemigos han muerto. Si un héroe ha conseguido 5+ —5 o más— VP, se cura.
 
-Cada equipo deberá crear un repo para el desarrollo de este juego. Todos los
-miembros del equipo deberán tener acceso al repo.
+4.1: Tests
+Identifiquen los tests necesarios para incorporar el concepto de encuentro y agreguenlos al proyecto de test. Estos tests deben fallar en este punto.
 
-## Parte 1: Modelado
+Incorporen los tests a la rama main del repositorio, y creen un Tag en este commit llamado TDD_Start.
 
-En equipo, modelen las clases y las colaboraciones que son necesarias para
-representar los elementos del juego mencioandos; pueden comenzar usando tarjetas
-CRC o directamente haciendo el diagrama de clases UML.
+4.2: El código
+Agreguen los encuentros y el código necesario para que funcionen según la lógica descrita anteriormente.
 
-> [!IMPORTANT]
-> Recuerden que los personajes deben poder tener items. Por ejemplo, los magos
-> pueden tener un bastón mágico, un libro de hechizos —con hechizos—, etc.
+Al finalizar este paso, los tests del punto anterior (4.1) deben pasar (dan verde).
 
-Deberán crear y subir al repositorio el modelo en forma de diagrama de clases.
-Pueden hacerlo con lápiz y papel y subir una foto; o pueden usar Diagram.net
-—antes Draw.io— o el complemento para Rider [Diagrams.​net
-Integration](https://plugins.jetbrains.com/plugin/15635-diagrams-net-integration)
+Incorporen el código a la rama main del repositorio, y creen un Tag en este commit llamado TDD_End.
 
-## Parte 2: Creación
+Anexo: Diagrama de clases
+A continuación se incluye un diagrama de clases de la solución provista en src/
 
-Cada equipo deberá crear las clases representadas en el modelo anterior. Cada
-integrante deberá crear, al menos:
+Class Diagram
 
-- Un personaje  🧙‍♂️
-- Dos elementos ⚔️ 🛡
-
-> [!IMPORTANT]
-> Recuerden crear el libro de hechizos y sus hechizos —existe un solo _tipo_ de
-> hechizo por ahora—.
-
-### Personajes
-
-Los personajes tienen, además de sus items, un nombre y una cantidad de vida
-limitada.
-
-Sus items pueden además quitarse o cambiarse por otros similares —por ejemplo,
-darle a un mago un bastón mágico nuevo, o simplemente quitarle el que tiene—.
-
-### Elementos
-
-Los elementos tienen un valor de ataque y un valor de defensa. Es posible que en
-algunos casos alguno de estos valores sea 0. Por ejemplo, un elemento "Armadura"
-puede tener valor de ataque 0.
-
-> [!TIP]
-> Fuente de [inspiración](https://ringsdb.com/find?q=t%3Aattachment).
-
-## Parte 3: Cobrando poder
-
-Agregar al proyecto el siguiente comportamiento:
-
-- Obtener el valor total de ataque de un personaje. ⚔️
-- Obtener el valor total de defensa de un personaje. 🛡
-- Atacar a un personaje (disminuir su vida en cierta cantidad) 🗡
-- Curar a un personaje (recuperar su vida inicial) 🚑
-
-Justificar con comentarios en el código las decisiones que tomaron para resolver
-esta parte del desafío, incluyendo si utilizaron algun patrón o principio.
-
-## Parte 4: Testing
-
-Deberán escribir casos de test para probar su programa. Como equipo tendrán que
-evaluar qué casos de test son necesarios, y deberán incluír la justificación de
-cada caso de test como comentario en el código del proyecto.
-
-Todos los integrantes del equipo deben participar de la escritura de tests
-—contribuyendo al menos uno de los casos—.
+1 «La refactorización (del inglés refactoring) es una técnica de la ingeniería de software para reestructurar un código fuente, alterando su estructura interna sin cambiar su comportamiento externo.» Fuente. Aquí hay también una guía de refactoring muy útil.
